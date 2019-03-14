@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<vbd>
+  <system>
+    <vmemfile>./vbdmem.bin</vmemfile>
+    <vmempages>32</vmempages>
+    <schedpolicy>roundrobin</schedpolicy>
+    <timeslice>999</timeslice>
+	<timelimit>1000</timelimit>
+  </system>
+
+  <taskset>
+    <task>
+      <register>
+	    <sp>0x80000000</sp>
+	    <lr>0x88888888</lr>
+	    <pc>0x105dc</pc>
+		<cpsr>0x60000000</cpsr> <!-- NZCV = 0110, other bits = 0 -->
+      </register>
+      <debug>
+	    <!-- <breakpoint>0x104cc</breakpoint> -->
+	    <watchpoint>0x95088</watchpoint>
+	    <watchsize>10</watchsize>
+      </debug>
+      <exefile>arm-exe/bsort</exefile>
+      <cpumask>0x0f</cpumask>
+      <nice>-20</nice>
+      <pid>100</pid>
+    </task>
+  </taskset>
+
+</vbd>
+
